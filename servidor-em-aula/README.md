@@ -21,12 +21,3 @@ deletePost deleta um post
 
 [POST] "/posts/create"
 createPost criar publicação
-
-[PUT] "posts/:id"
-replacePost atualiza postagem/publicação
-
-[PATCH] "posts/updateTitle/:id"
-updateTitle atualizar somente o titulo da postagem
-
-[PATCH] "/posts/update/:id"
-updateAnything atualizar qualquer parte do post separadamente
