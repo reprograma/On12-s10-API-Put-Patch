@@ -13,7 +13,7 @@ const getById = (request, response) => {
 
 const createTask = (request, response) => {
     const requiredDescription = request.body.descricao;
-    const requiredName = request.body.nomeColaborador;
+    const requiredName = request.body.autor;
 
     const newTask = {
         id: Math.random().toString(32).substr(2, 9),
@@ -23,7 +23,7 @@ const createTask = (request, response) => {
         nomeColaborador: requiredName
     };
 
-    tarefasJson.push(newTask);
+    tasksJson.push(newTask);
 
     response.status(200).send(newTask);
 };
