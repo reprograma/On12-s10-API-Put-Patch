@@ -1,5 +1,4 @@
-[
-    {
+[{
         "id": 1,
         "dataCriacao": "18/10/2020",
         "titulo": "Dicas importantes para quem quer migrar de carreira",
@@ -39,6 +38,19 @@
             "react",
             "vue",
             "jQuery",
+            "frontEnd"
+        ]
+    },
+    {
+        "id": 8,
+        "dataCriacao": "10/07/2021",
+        "titulo": "Java e Javascript: qual a diferença?",
+        "conteudo": "Quando começamos a estudar uma das linguagens, devido à similaridade no nome, podemos confudir Java com Javascript. Mas com um pouco de atenção é possível perceber que as duas linguagens são completamente diferentes. Venha descobrir!",
+        "etiquetas": [
+            "javascript",
+            "java",
+            "linguagem",
+            "backend",
             "frontEnd"
         ]
     }

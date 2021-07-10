@@ -1,25 +1,23 @@
-const tarefasJson = require("../models/tarefas.json")
-const fs = require("fs")
+const tarefasJson = require("../models/tarefas.json");
+// const fs = require("fs");
 
-const getAll = (request, response)=>{
-    response.status(200).send(tarefasJson)
-}
+const getAll = (request, response) => {
+    response.status(200).send(tarefasJson);
+};
 
-const getById = (request, response) =>{
+const getById = (request, response) => {
     const idRequirido = request.params.id
     const tarefaFiltrada = tarefasJson.find(tarefa => tarefa.id == idRequirido)
 
     response.status(200).send(tarefaFiltrada)
 }
 
-const createTask = (request, response) =>{
+const createTask = (request, response) => {
     const descricaoRequirida = request.body.descricao
     const nomeColaboradorRequirido = request.body.nomeColaborador
 
-    
-
-    const novaTarefa ={
-        id: Math.random().toString(32).substr(2,9),
+    const novaTarefa = {
+        id: Math.random().toString(32).substr(2, 9),
         dataInclusao: new Date(),
         concluido: false,
         descricao: descricaoRequirida,
@@ -38,7 +36,7 @@ const createTask = (request, response) =>{
 
 }
 
-const deleteTask = (request, response)=>{
+const deleteTask = (request, response) => {
     const idRequirido = request.params.id
     const tarefaFiltrada = tarefasJson.find(tarefa => tarefa.id == idRequirido)
 
@@ -59,7 +57,7 @@ const deleteTask = (request, response)=>{
 }
 
 
-module.exports ={
+module.exports = {
     getAll,
     getById,
     createTask,

@@ -1,0 +1,39 @@
+- Configuração
+
+[] Arquitetura MVC + arquivos
+[] Arquivos de configuração (npm init, dependências)
+
+- Entendendo demandas de negócio
+
+[] Preencher no readme as demandas de negócio + as rotas para cada coisa solicitada
+
+- Povoando os arquivos
+
+[] Iniciando o servidor no arquivo server.js
+
+[] App.js
+    [] Importar express e instanciá-lo
+    [] Importar cors
+    [] Importar body-parse
+    [] Importar arquivos de rotas
+    [] Definir rota principal
+    [] Exportar const app
+
+[] Arquivo de rotas (postsRoutes.js)
+    [] Importar express e instanciar router
+    [] Importar controller
+    [] Definir rota .get()
+    [] Passar para essa rota a const do controller
+    [] Exportar rotas
+
+[] Arquivo de controller (postsControllers.js)
+    [] Importar arquivo json
+    [] Criar primeira const para retornar todas as infos do json(getAll)
+    [] Criar const filtrar pelo id (getById)
+
+    [] Criar const para deletar
+    [] Criar const para postar
+
+    [] Criar const para put + rota
+    [] Criar const para patch + rota
+
