@@ -20,21 +20,26 @@ const createPost = (req, res) => {
     let requestedContent = req.body.conteudo;
     let requestedLabels = req.body.etiquetas;
 
-    let newPost = {
-        "id": Math.random().toString(32).substr(2, 6),
-        "dataCriacao": new Date(),
-        "titulo": requestedTitle,
-        "conteudo": requestedContent,
-        "etiquetas": requestedLabels
-    };
+    if (requestedTitle && requestedContent && requestedLabels) {
+        let newPost = {
+            "id": Math.random().toString(32).substr(2, 6),
+            "dataCriacao": new Date(),
+            "titulo": requestedTitle,
+            "conteudo": requestedContent,
+            "etiquetas": requestedLabels
+        };
 
-    postsJson.push(newPost);
+        postsJson.push(newPost);
 
-    // enviar uma resposta
-    res.status(201).send({
-        "mensagem": "Post criado com sucesso",
-        newPost
-    });
+        // enviar uma resposta
+        res.status(201).send({
+            "mensagem": "Post criado com sucesso",
+            newPost
+        });
+    } else {
+        res.status(404).send({ "message": "Não foi possível cadastrar um novo post. Por favor, insira todas as informações necessárias" })
+    }
+
 };
 
 // substituir todo item da lista do json
@@ -82,5 +87,42 @@ const updateTitle = (req, res) => {
     });
 };
 
+// const para atualizar qualquer coisa
+const updateAnything = (req, res) => {
+    // trazer os dados da requisição
+    let requestedId = req.params.id;
+    // pelo id, eu encontro o item a ser atualizado
+    let filteredPost = postsJson.find(post => post.id == requestedId);
+    let updatedPost = req.body;
 
-module.exports = { getAll, getById, createPost, replacePost, updateTitle }
+    let keyList = Object.keys(updatedPost);
+    // fazer a substituição do valor da chave enviada para o valor da chave atual
+
+    keyList.forEach((key) => {
+
+        // filteredPost[algumaCoisa] = updatedPost[algumaCoisa]
+        filteredPost[key] = updatedPost[key];
+    });
+
+    res.status(200).send({
+        "message": "Post atualizado com sucesso",
+        filteredPost
+    });
+};
+
+// const para deletar post
+const deletePost = (request, response) => {
+    const requestedId = request.params.id;
+    const filteredPost = postsJson.find(post => post.id == requestedId);
+
+    const index = postsJson.indexOf(filteredPost);
+
+    postsJson.splice(index, 1);
+
+    response.status(200).json([{
+        "mensagem": "Post deletado com sucesso",
+        postsJson
+    }]);
+};
+
+module.exports = { getAll, getById, createPost, replacePost, updateTitle, updateAnything, deletePost }
