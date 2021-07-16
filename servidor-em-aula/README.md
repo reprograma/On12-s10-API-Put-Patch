@@ -24,7 +24,7 @@ const createPost para criar um post
 
 Dados esperados
 {
-    "id": automático,
+    "id":String
     "dataCriacao": automática,
     "titulo": String,
     "conteudo": String,
