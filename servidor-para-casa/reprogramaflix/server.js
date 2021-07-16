@@ -1,7 +1,6 @@
-
 const app = require("./src/app.js")
-
+const porta = 8080
 // definir uma porta para o nosso servidor
-app.listen(8080, () => {
-    console.log("Servidor ta no grau 8080")
+app.listen(porta, () => {
+    console.log(`Servidor ${porta} tá no grau`)
 })
