@@ -90,11 +90,11 @@ const updateTitle = (request, response) => {
 //         tarefaFiltrada[key] = update[key]
 //     })
     
-    // response.status(200).send({
-    //     "message": "Informação atualizada com sucesso.",
-    //     tarefaFiltrada
-    // })
-//}
+//     response.status(200).send({
+//         "message": "Informação atualizada com sucesso.",
+//         tarefaFiltrada
+//     })
+// }
 
 module.exports = {
     getAll,
