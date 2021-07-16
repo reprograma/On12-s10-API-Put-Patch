@@ -33,8 +33,7 @@
     [x] Criar const filtrar pelo id (getById)
 
     [x] Criar const para deletar
-    [x] Criar const para postar
+    [] Criar const para postar
 
-    [x] Criar const para put + rota
-    [x] Criar const para patch + rota
-
+    [] Criar const para put + rota
+    [] Criar const para patch + rota
