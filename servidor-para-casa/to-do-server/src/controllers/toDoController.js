@@ -1,5 +1,5 @@
 const tarefasJson = require("../models/tarefas.json");
-// const fs = require("fs");
+
 
 const getAll = (request, response) => {
     response.status(200).send(tarefasJson);
@@ -26,11 +26,6 @@ const createTask = (request, response) => {
 
     tarefasJson.push(novaTarefa)
 
-    // fs.writeFile("./src/models/tarefas.json", JSON.stringify(tarefasJson), 'utf8', function(err){
-    //     if(err) {
-    //         return response.status(424).send({message: err})
-    //     }
-    // })
 
     response.status(200).send(novaTarefa)
 
@@ -43,23 +38,61 @@ const deleteTask = (request, response) => {
     const indice = tarefasJson.indexOf(tarefaFiltrada)
     tarefasJson.splice(indice, 1)
 
-    // fs.writeFile("./src/models/tarefas.json", JSON.stringify(tarefasJson), 'utf8', function(err){
-    //     if(err) {
-    //         return response.status(424).send({message: err})
-    //     }
-    // })
-
     response.status(200).json([{
         "mensagem": "Tarefa deletada com sucesso",
         tarefasJson
     }])
 
-}
+};
+const replaceTask = (request, response)=>{
+    let requestedId = request.params.id;
+    let taskFromBody = request.body;
+
+    let filteredTask = tarefasJson.find(task=> task.id == requestedId);
+
+    let updatedTask = {
+        "id": filteredTask.id,
+        "dataInclusao": taskFromBody.dataInclusao,
+        "concluido": taskFromBody.concluido,
+        "descricao": taskFromBody.descricao,
+        "nomeColaborador": taskFromBody.nomeColaborador
+    }
+    let indice = tarefasJson.indexOf(filteredTask);
+    tarefasJson.splice(indice, 1, updatedTask);
+
+    response.status(200).send({"message": "Tarefa substituída com sucesso", updatedTask})
+};
+const updateDescription =(request,response) =>{
+    //pegar os dados da requisição
+    let requestedId = request.params.id;
+    let newDescription = request.body.descricao;
+    //achar o item da lista que tem o mesmo id
+    let filteredTask = tarefasJson.find(task=> task.id == requestedId);
+    
+    filteredTask.descricao = newDescription;
+
+    response.status(200).send({"message": "Descrição atualizada com sucesso", filteredTask})
+};
+
+const updateAnything = (request, response) => {
+    let requestedId = request.params.id;
+    let updatedTask = request.body;
+    let filteredTask = tarefasJson.find(task=> task.id == requestedId);
+
+    let keyList = Object.keys(updatedTask);
+    keyList.forEach((key)=>{
+        filteredTask[key] = updatedTask[key];
+    });
+    response.status(200).send({"mensagem": "Tarefa atualizada com sucesso.", filteredTask});
+};
 
 
 module.exports = {
     getAll,
     getById,
     createTask,
-    deleteTask
+    deleteTask,
+    replaceTask,
+    updateAnything,
+    updateDescription
 }

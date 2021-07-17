@@ -1,23 +1,24 @@
 - Configuração
 
-[] Arquitetura MVC + arquivos
-[] Arquivos de configuração (npm init, dependências)
+[x] Arquitetura MVC + arquivos
+[x] Arquivos de configuração (npm init, dependências)
+[x] Arquivo .gitignore
 
 - Entendendo demandas de negócio
 
-[] Preencher no readme as demandas de negócio + as rotas para cada coisa solicitada
+[x] Preencher no readme as demandas de negócio + as rotas para cada coisa solicitada
 
 - Povoando os arquivos
 
-[] Iniciando o servidor no arquivo server.js
+[x] Iniciando o servidor no arquivo server.js
 
-[] App.js
-    [] Importar express e instanciá-lo
-    [] Importar cors
-    [] Importar body-parse
-    [] Importar arquivos de rotas
-    [] Definir rota principal
-    [] Exportar const app
+[x] App.js
+    [x] Importar express e instanciá-lo
+    [x] Importar cors
+    [x] Importar body-parse (express.json())
+    [x] Importar arquivos de rotas
+    [x] Definir rota principal
+    [x] Exportar const app
 
 [] Arquivo de rotas (postsRoutes.js)
     [] Importar express e instanciar router
