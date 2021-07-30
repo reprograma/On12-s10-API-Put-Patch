@@ -7,6 +7,10 @@ router.get("/:id", controller.getById);
 
 router.post("/cadastrar", controller.createTask);
 
+router.put("/atualizar",controller.replaceTask);
+
+router.patch("/atualizarDescription", controller.updateDescription);
+
 router.delete("/:id", controller.deleteTask);
 
 module.exports = router;
