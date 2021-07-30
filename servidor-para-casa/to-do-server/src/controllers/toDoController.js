@@ -28,6 +28,36 @@ const createTask = (request, response) => {
     response.status(200).send(newTask);
 };
 
+const replaceTask = (request, response) => {
+    let requestedId = req.params.id
+    let tasksJsonFromBody = req.body
+    const filteredTask = tasksJson.find(task => task.id == requestedId);
+
+           let updatedTask = {
+            id: filteredTask.id,
+            data: tasksJsonFromBody.data,
+            descricao: tasksJsonFromBody.description,
+            autor: tasksJsonFromBody.autor
+
+           };
+
+           let indice = task.indexOf(filteredTask);
+           task.splice(indice, 1, updatedTask)
+
+           res.status(200).send({"message": "Post substituído com sucesso", updatedTask})
+}
+
+
+const updateDescription = (request, response) => {
+
+    let requestedId = req.params.id;
+    let newDescription = req.body.description
+    let filteredtasks = tasksJson.find(tasksJson => tasksJson.id == requestedId)
+    filteredTask.description = newDescription
+    res.status(200).send({"message": " Descrição atualizada com sucesso", filteredDescription})
+};
+
+
 const deleteTask = (request, response) => {
     const requiredId = request.params.id;
     const filteredTask = tasksJson.find(task => task.id == requiredId);
@@ -47,5 +77,7 @@ module.exports = {
     getAll,
     getById,
     createTask,
+    replaceTask,
+    updateDescription,
     deleteTask
-}
+};
